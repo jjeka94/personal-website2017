@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+	<title>Menjacnica</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	input[type=text], select {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+input[type=button] {
+    width: auto;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=button]:hover {
+    background-color: #45a049;
+}
+	</style>
+	
+	<script name="JavaScript">
+		var kursDinEuro = 122;
+		var kursDinDolar = 108;
+
+		var iznos = 0;
+		var valuta;
+		var valutaNew;
+		var iznosKonvert = 0;
+
+		function Convert()
+		{
+			var valutaForCalc = 0;
+			
+			var valutaTemp = document.getElementsByName("valutaComboBox");
+			valuta = valutaTemp[0].value;
+		
+			
+			var valutaNewTemp = document.getElementsByName("valutaNewComboBox");
+			valutaNew = valutaNewTemp[0].value;
+			
+
+			var iznosTemp = document.getElementsByName("iznosTextBox");
+			iznos = iznosTemp[0].value;
+		
+			
+			if (valuta == "dinar")
+			{
+				valutaForCalc = iznos * 1;
+			}
+			else if (valuta == "euro")
+			{
+				valutaForCalc = iznos * kursDinEuro;
+			}
+			else if (valuta == "dolar")
+			{
+				valutaForCalc = iznos * kursDinDolar;
+			}
+			else
+			{
+				valutaForCalc = 0;
+			}
+			
+			
+			if (valutaNew == "dinar")
+			{
+				iznosKonvert = valutaForCalc / 1;
+			}
+			else if (valutaNew == "euro")
+			{
+				iznosKonvert = valutaForCalc / kursDinEuro;
+			}
+			else if (valutaNew == "dolar")
+			{
+				iznosKonvert = valutaForCalc / kursDinDolar;
+			}
+			else
+			{
+				iznosKonvert = 0;
+			}
+			
+			//alert(iznosKonvert);
+			document.getElementsByName("iznosKonvertTextBox")[0].value = iznosKonvert;
+		
+		}
+		
+
+	function Back() {
+    window.history.back();
+}
+		
+	</script>
+	</head>
+	<body>
+
+	
+	<div>
+		<form action="">
+			<label for="iznosTextBox">IZNOS</label>
+			<input type="text" name="iznosTextBox" id="iznosTextBox" maxlength="10" placeholder="Vaš iznos..." >
+			<label for="valutaComboBox" >IZ VALUTE</label>
+			<select name="valutaComboBox" id="valutaComboBox">
+				<option value="dinar" id="dinar" selected >RSD-Srpski dinar</option>
+				<option value="euro" id="euro" >EUR-Euro</option>
+				<option value="dolar" id="dolar" >USD-Americki dolar</option>
+			</select>
+			<label for="valutaNewComboBox">U VALUTU</label>
+			<select name="valutaNewComboBox" id="valutaNewComboBox">
+				<option value="dinar" id="dinar" >RSD-Srpski dinar</option>
+				<option value="euro" id="euro" selected >EUR-Euro</option>
+				<option value="dolar" id="dolar" >USD-Americki dolar</option>
+			</select>
+			<input type="button" name="Konvertuj" id="Konvertuj" value="Konvertuj" onclick="Convert()">
+			<br>
+			<label for=iznosKonvertTextBox">NOVI IZNOS</label>
+			<input type="text" name="iznosKonvertTextBox" id="iznosKonvertTextBox" maxlength="20" placeholder="Vaš iznos..." value="">
+			<p id="demo"></p>
+		</form>
+	</div>
+
+
+	</body>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="kalkulator.css">
+</head>
+<script name="JavaScript">
+function c(val)
+{
+document.getElementById("d").value=val;
+}
+function vrednost(val)
+{
+document.getElementById("d").value+=val;
+}
+function e() 
+{ 
+try 
+{ 
+  c(eval(document.getElementById("d").value)) 
+} 
+catch(e) 
+{
+  c('Error') 
+} 
+}  
+</script>
+<body>
+<div class="box">
+<div class="display">
+	<input type="text" readonly size="18" id="d">
+</div>
+<div class="keys">
+    <p>
+	<input type="button" name="jedan" class="button black"  value="7" onclick='vrednost("7")'>
+	<input type="button" name="dva" class="button black"  value="8" onclick='vrednost("8")'>
+	<input type="button" name="tri" class="button black" value="9" onclick='vrednost("9")'>
+	<input type="button" name="plus"  class="button pink"  value="+" onclick='vrednost("+")'>
+	</p>
+    <p>
+	<input type="button" name="cetri" class="button black" value="4" onclick='vrednost("4")'>
+	<input type="button" name="pet" class="button black" value="5" onclick='vrednost("5")'>
+	<input type="button" name="sest" class="button black"  value="6" onclick='vrednost("6")'>
+	<input type="button" name="minus"  class="button pink" value="-" onclick='vrednost("-")'>
+	</p>
+    <p>
+	<input type="button" name="sedam" class="button black" value="1" onclick='vrednost("1")'>
+	<input type="button" name="osam" class="button black" value="2" onclick='vrednost("2")'>
+	<input type="button" name="devet"  class="button black" value="3" onclick='vrednost("3")'>
+	<input type="button" name="puta"  class="button pink" value="x" onclick='vrednost("*")'>
+	</p>
+    <p>
+	<input type="button" name="brisi" class="button pink" value="c" onclick='c("")'>
+	<input type="button" name="nula" class="button black" value="0" onclick='vrednost("0")'>
+	<input type="button" name="jednako" class="button error"  value="=" onclick='e()'>
+	<input type="button" name="deljenje"  class="button pink"   value="/" onclick='vrednost("/")'>
+	</p>
+
+</div>
+</div>
+</body>
+
+</html>
